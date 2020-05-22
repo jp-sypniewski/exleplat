@@ -49,6 +49,9 @@ public class TopicServiceImpl implements TopicService {
 		if (opt.isPresent()) {
 			Topic managedTopic = opt.get();
 			managedTopic.setTitle(topic.getTitle());
+			managedTopic.setContent(topic.getContent());
+			managedTopic = topicRepo.saveAndFlush(managedTopic);
+			return managedTopic;
 		}
 		return null;
 	}
