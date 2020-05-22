@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Topic {
@@ -15,6 +17,10 @@ public class Topic {
 	private String title;
 	
 	private String content;
+	
+	@ManyToOne
+	@JoinColumn(name="author_username")
+	private User user;
 
 	// constructors
 
@@ -22,11 +28,12 @@ public class Topic {
 		super();
 	}
 
-	public Topic(int id, String title, String content) {
+	public Topic(int id, String title, String content, User user) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
+		this.user = user;
 	}
 	
 	// getters setters
@@ -53,6 +60,14 @@ public class Topic {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	// hashcode and equals

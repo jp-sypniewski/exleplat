@@ -48,5 +48,10 @@ class TopicTests {
 		assertNotNull(topic);
 		assertEquals("test", topic.getTitle());
 	}
+	
+	@Test
+	void testUser() {
+		assertEquals("orangeisntblue", topic.getUser().getUsername());
+	}
 
 }
