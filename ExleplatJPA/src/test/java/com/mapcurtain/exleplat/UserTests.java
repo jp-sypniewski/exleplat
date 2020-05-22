@@ -48,5 +48,10 @@ class UserTests {
 		assertNotNull(user);
 		assertEquals("password", user.getPassword());
 	}
+	
+	@Test
+	void testProfile() {
+		assertEquals("jp.sypniewski@gmail.com", user.getProfile().getEmail());
+	}
 
 }
