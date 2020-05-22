@@ -3,12 +3,12 @@ package com.mapcurtain.exleplat.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mapcurtain.exleplat.repositories.UserRepository;
+import com.mapcurtain.exleplat.repositories.ProfileRepository;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class ProfileServiceImpl implements ProfileService {
 	
 	@Autowired
-	private UserRepository userRepo;
+	private ProfileRepository profileRepo;
 
 }
