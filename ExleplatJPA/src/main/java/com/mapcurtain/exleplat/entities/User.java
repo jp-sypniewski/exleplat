@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -27,19 +29,26 @@ public class User {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
+	@OneToOne
+	@JoinColumn(name="profile_id", unique=true)
+	private Profile profile;
+	
 	// constructors
 
 	public User() {
 		super();
 	}
 
-	public User(String username, String password, String role, LocalDateTime createdAt, LocalDateTime updatedAt) {
+	public User(String username, String password, String role,
+			LocalDateTime createdAt, LocalDateTime updatedAt,
+			Profile profile) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.role = role;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+		this.profile = profile;
 	}
 	
 	// getters setters
@@ -83,9 +92,17 @@ public class User {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	// hashcode and equals
 	
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
+	
+	// hashcode and equals
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
